@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert, Button } from 'react-native';
 import { MaterialCommunityIcons as Icon } from 'react-native-vector-icons';
 
 export default class App extends React.Component {
@@ -20,13 +20,18 @@ export default class App extends React.Component {
     this.initializeGame()
   }
 
+  onNewGamePress = () => {
+    this.initializeGame()
+  }
+
   initializeGame = () => {
     this.setState({gameState:
       [
         [0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]
-      ]
+      ],
+    currentPlayer: 1,
     })
   }
 
@@ -142,6 +147,9 @@ export default class App extends React.Component {
           </TouchableOpacity>
         </View>
 
+        <View style={{paddingTop: 50}}>
+          <Button title="New Game" onPress={() => this.onNewGamePress()} />
+        </View>
       </View>
     );
   }
